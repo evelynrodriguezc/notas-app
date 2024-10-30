@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const Note = require("./data/notes");
+const { Types } = require('mongoose');
 
 const app = express();
 const PORT = 3001;
@@ -52,6 +53,18 @@ app.delete('/notas/:id', async(req, res ) => {
     } catch(error){
         console.error("Error al eliminar la nota", error);
         res.status(404).send("ID no válida");
+    }
+});
+
+app.put("/notas/:id", async(req, res) => {
+    try {
+        const { id } = req.params
+        const updatedNota = await Note.findByIdAndUpdate(id, {text: req.body.text})
+        if(!updatedNota) return res.status(404).send("Nota no encontrada")
+            res.json(updatedNota)
+    } catch (error) {
+        console.error("Error al modificar la nota", error);
+        res.status(400).send("ID no valido")
     }
 })
 
