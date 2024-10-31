@@ -40,12 +40,17 @@ const TaskList = () => {
                 taskToEdit={taskToEdit}
                 setTaskToEdit={setTaskToEdit}
             />
+            <h2>Tus notas</h2>
             <ul>
                 {tasks.map((task) => (
                     <li key={task._id}>
                         {task.text}
-                        <button className="edit-button" onClick={() => editarTarea(task)}>e</button>
-                        <button className="delete-button" onClick={() => eliminarTarea(task._id)}>x</button>
+                        <button className="edit-button" onClick={() => editarTarea(task)}>
+                            <i className="fas fa-pencil-alt"></i>
+                        </button>
+                        <button className="delete-button" onClick={() => eliminarTarea(task._id)}>
+                            <i className="fas fa-trash"></i>
+                        </button>
                     </li>
                 ))}
             </ul>

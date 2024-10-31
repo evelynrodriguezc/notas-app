@@ -48,7 +48,7 @@ const TaskForm = ({  onTaskAdded, taskToEdit, setTaskToEdit }) => {
             placeholder="Escribe una nota"
             required
             />
-            <button type="submit">{taskToEdit ? "Actualizar Nota" : "Agregar Nota"}</button>
+            <button className="button-pp" type="submit">{taskToEdit ? "Actualizar Nota" : "Agregar Nota"}</button>
         </form>
     );
 };
